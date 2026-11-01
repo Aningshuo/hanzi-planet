@@ -1,0 +1,77 @@
+{
+  "name": "hanzi-planet",
+  "version": "1.0.0",
+  "description": "汉字星球 · 儿童识字学习工作台",
+  "main": "electron/main.js",
+  "author": "Hanzi Planet",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/education-ai-lab/hanzi-planet.git"
+  },
+  "homepage": "https://github.com/education-ai-lab/hanzi-planet#readme",
+  "scripts": {
+    "start": "electron .",
+    "dist:mac": "electron-builder --mac --arm64 --x64",
+    "dist:win": "electron-builder --win --x64",
+    "shot": "electron --no-sandbox --disable-gpu tools/shot.js"
+  },
+  "devDependencies": {
+    "electron": "^32.2.0",
+    "electron-builder": "^25.1.8",
+    "hanzi-writer": "^3.5.0",
+    "hanzi-writer-data": "^2.0.1",
+    "pinyin-pro": "^3.29.5"
+  },
+  "build": {
+    "appId": "com.hanziplanet.desktop",
+    "productName": "汉字星球",
+    "copyright": "Copyright © 2026 Hanzi Planet",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "electron/**/*",
+      "src/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "artifactName": "HanziPlanet-${version}-${arch}.${ext}",
+    "mac": {
+      "category": "public.app-category.education",
+      "icon": "build/icon.png",
+      "identity": null,
+      "darkModeSupport": false,
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "用于「说」环节录下孩子的跟读声音，仅在本机播放，不会上传到任何服务器。",
+        "CFBundleDisplayName": "汉字星球"
+      },
+      "target": [
+        { "target": "dmg", "arch": ["arm64", "x64"] }
+      ]
+    },
+    "dmg": {
+      "title": "汉字星球 ${version}",
+      "contents": [
+        { "x": 140, "y": 200, "type": "file" },
+        { "x": 400, "y": 200, "type": "link", "path": "/Applications" }
+      ]
+    },
+    "win": {
+      "icon": "build/icon.png",
+      "target": [
+        { "target": "nsis", "arch": ["x64"] }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "汉字星球",
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}

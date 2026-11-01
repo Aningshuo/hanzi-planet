@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; media-src 'self' blob:; connect-src 'self'" />
+  <title>汉字星球 · 识字工作台</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/views.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-orb"><span>汉</span></div>
+        <div class="brand-name">汉字星球</div>
+      </div>
+      <nav class="nav" id="nav">
+        <button class="nav-item active" data-view="map">
+          <span class="nav-ico" style="--c:#ff8a5c">🗺️</span><span class="nav-label">学习地图</span>
+        </button>
+        <button class="nav-item" data-view="review">
+          <span class="nav-ico" style="--c:#58b6ff">🔁</span><span class="nav-label">复习中心</span>
+          <span class="nav-dot" id="dueDot" hidden></span>
+        </button>
+        <button class="nav-item" data-view="read">
+          <span class="nav-ico" style="--c:#3ecfa0">📖</span><span class="nav-label">绘本馆</span>
+        </button>
+        <button class="nav-item" data-view="pinyin">
+          <span class="nav-ico" style="--c:#a78bfa">🔤</span><span class="nav-label">拼音乐园</span>
+        </button>
+        <button class="nav-item" data-view="grow">
+          <span class="nav-ico" style="--c:#ffc247">🌟</span><span class="nav-label">成长乐园</span>
+        </button>
+        <button class="nav-item" data-view="parent">
+          <span class="nav-ico" style="--c:#7d8ba1">👨‍👩‍👧</span><span class="nav-label">家长中心</span>
+        </button>
+      </nav>
+      <div class="side-foot">
+        <button class="icon-btn" id="soundToggle" title="音效开关">🔊</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar" id="topbar">
+        <div class="page-head">
+          <h1 id="pageTitle">学习地图</h1>
+          <p id="pageSub">今天也来认识几个新朋友吧</p>
+        </div>
+        <div class="chips">
+          <div class="chip chip-streak" title="连续学习天数"><span>🔥</span><b id="chipStreak">0</b> 天</div>
+          <div class="chip chip-star" title="累计星星"><span>⭐</span><b id="chipStars">0</b></div>
+          <div class="chip chip-time" title="今日学习时长"><span>⏱️</span><b id="chipTime">0</b> 分钟</div>
+          <button class="avatar" id="avatarBtn" title="我的小档案">🐣</button>
+        </div>
+      </header>
+      <div class="view" id="view"></div>
+    </main>
+  </div>
+
+  <div id="overlay" class="overlay"></div>
+  <div id="toast" class="toast"></div>
+  <div id="confetti" class="confetti-layer"></div>
+
+  <script src="vendor/hanzi-writer.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="data/book-pinyin.js"></script>
+  <script src="data/strokes.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/sfx.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/views/map.js"></script>
+  <script src="js/views/lesson.js"></script>
+  <script src="js/views/review.js"></script>
+  <script src="js/views/read.js"></script>
+  <script src="js/views/pinyin.js"></script>
+  <script src="js/views/grow.js"></script>
+  <script src="js/views/parent.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
